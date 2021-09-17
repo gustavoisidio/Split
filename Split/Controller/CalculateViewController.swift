@@ -98,7 +98,7 @@ class CalculateViewController: UIViewController {
         contentView.zeroButton.isEnabled = false
         contentView.twentyButton.isEnabled = true
         
-        contentView.zeroButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        contentView.zeroButton.backgroundColor = .systemBlue
         contentView.tenButton.backgroundColor = .white
         contentView.twentyButton.backgroundColor = .white
         
@@ -111,7 +111,7 @@ class CalculateViewController: UIViewController {
         contentView.twentyButton.isEnabled = true
         
         contentView.zeroButton.backgroundColor = .white
-        contentView.tenButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        contentView.tenButton.backgroundColor = .systemBlue
         contentView.twentyButton.backgroundColor = .white
         
         tip = 0.1
@@ -124,7 +124,7 @@ class CalculateViewController: UIViewController {
         
         contentView.zeroButton.backgroundColor = .white
         contentView.tenButton.backgroundColor = .white
-        contentView.twentyButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        contentView.twentyButton.backgroundColor = .systemBlue
         
         tip = 0.2
     }

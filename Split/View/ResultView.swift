@@ -38,7 +38,7 @@ class ResultView: UIView {
         textView.font = UIFont.boldSystemFont(ofSize: 50)
         textView.textAlignment = .center
         textView.alpha = 1.0
-        textView.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        textView.textColor = .systemBlue
         textView.isEditable = false
         return textView
     }()
@@ -56,9 +56,9 @@ class ResultView: UIView {
     let recalculateButton: UIButton = {
         let button = UIButton()
         button.setTitle("Recalculate", for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        button.backgroundColor = .systemBlue
         button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
-        button.setTitleShadowColor(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), for: .normal)
+        button.setTitleShadowColor(.systemBlue, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         button.layer.cornerRadius = 10
 

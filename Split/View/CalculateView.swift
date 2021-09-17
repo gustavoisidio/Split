@@ -37,7 +37,7 @@ class CalculateView: UIView {
         textField.placeholder = "e.g 123.56"
         textField.textAlignment = .center
         textField.font = UIFont.systemFont(ofSize: 40)
-        textField.textColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        textField.textColor = .systemBlue
         textField.keyboardType = UIKeyboardType.decimalPad
         return textField
     }()
@@ -55,7 +55,7 @@ class CalculateView: UIView {
     let zeroButton: UIButton = {
         let button = UIButton()
         button.setTitle("0%", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 40)
         button.isEnabled = true
         button.setTitleColor(.white, for: .disabled)
@@ -66,7 +66,7 @@ class CalculateView: UIView {
     let tenButton: UIButton = {
         let button = UIButton()
         button.setTitle("10%", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 40)
         button.isEnabled = true
         button.setTitleColor(.white, for: .disabled)
@@ -77,7 +77,7 @@ class CalculateView: UIView {
     let twentyButton: UIButton = {
         let button = UIButton()
         button.setTitle("20%", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 40)
         button.isEnabled = true
         button.setTitleColor(.white, for: .disabled)
@@ -101,7 +101,7 @@ class CalculateView: UIView {
         textView.font = UIFont.systemFont(ofSize: 30)
         textView.textAlignment = .center
         textView.alpha = 1.0
-        textView.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        textView.textColor = .systemBlue
         textView.isEditable = false
         return textView
     }()
@@ -115,9 +115,9 @@ class CalculateView: UIView {
     let calculateButton: UIButton = {
         let button = UIButton()
         button.setTitle("Calculate", for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        button.backgroundColor = .systemBlue
         button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
-        button.setTitleShadowColor(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), for: .normal)
+        button.setTitleShadowColor(.systemBlue, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         button.layer.cornerRadius = 10
 
