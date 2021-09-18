@@ -15,12 +15,31 @@ class ResultViewController: UIViewController {
     var totalResult: Float = 0.0
     var tip: Float = 0.0
     
+    init(splitsValue: Int, totalResultValue: Float, tipValue: Float) {
+        splits = splitsValue
+        totalResult = totalResultValue
+        tip = tipValue
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         loadUI()
         makeActions()
+        view.backgroundColor = .white
+    }
+    
+    // MARK: - UI
+    func loadUI() {
+        contentView.resultValueTextView.text = String(format: "%.2f", totalResult)
+        contentView.descriptionSplitTextView.text = "Split between \(splits) people, with \(Int(tip))% tip."
     }
     
     func setupView() {
@@ -35,6 +54,7 @@ class ResultViewController: UIViewController {
         ])
     }
     
+    // MARK: - Actions
     func makeActions() {
         contentView.recalculateButton.addTarget(self, action: #selector(recalculateButton), for: .touchUpInside)
     }
@@ -42,11 +62,6 @@ class ResultViewController: UIViewController {
     @objc func recalculateButton(sender: UIButton){
         self.dismiss(animated: true, completion: nil)
         buttonAnimation(sender: sender)
-    }
-    
-    func loadUI() {
-        contentView.resultValueTextView.text = String(format: "%.2f", totalResult)
-        contentView.descriptionSplitTextView.text = "Split between \(splits) people, with \(Int(tip))% tip."
     }
     
     func buttonAnimation(sender: UIButton) {

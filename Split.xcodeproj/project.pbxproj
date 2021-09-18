@@ -16,6 +16,7 @@
 		5738D6B126F2B81B009AE5ED /* CalculateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5738D6B026F2B81B009AE5ED /* CalculateView.swift */; };
 		57E16FBF26F344C700C98880 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E16FBE26F344C700C98880 /* ResultView.swift */; };
 		57E16FC126F344DA00C98880 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E16FC026F344DA00C98880 /* ResultViewController.swift */; };
+		57E1701B26F5506E00C98880 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 57E1701826F5506D00C98880 /* launch.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		5738D6B026F2B81B009AE5ED /* CalculateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateView.swift; sourceTree = "<group>"; };
 		57E16FBE26F344C700C98880 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		57E16FC026F344DA00C98880 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		57E1701826F5506D00C98880 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launch.png; path = Assets.xcassets/launch.png; sourceTree = "<group>"; };
+		57E1701E26F56AF900C98880 /* deleteme.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = deleteme.playground; path = ../deleteme.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +49,7 @@
 		5738D69026F29049009AE5ED = {
 			isa = PBXGroup;
 			children = (
+				57E1701E26F56AF900C98880 /* deleteme.playground */,
 				5738D69B26F29049009AE5ED /* Split */,
 				5738D69A26F29049009AE5ED /* Products */,
 			);
@@ -68,6 +72,7 @@
 				57E16FE326F360A900C98880 /* Controller */,
 				5738D6A526F2904E009AE5ED /* Assets.xcassets */,
 				5738D6A726F2904E009AE5ED /* LaunchScreen.storyboard */,
+				57E1701826F5506D00C98880 /* launch.png */,
 				5738D6AA26F2904E009AE5ED /* Info.plist */,
 			);
 			path = Split;
@@ -149,6 +154,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57E1701B26F5506E00C98880 /* launch.png in Resources */,
 				5738D6A926F2904E009AE5ED /* LaunchScreen.storyboard in Resources */,
 				5738D6A626F2904E009AE5ED /* Assets.xcassets in Resources */,
 				5738D6A426F29049009AE5ED /* Main.storyboard in Resources */,

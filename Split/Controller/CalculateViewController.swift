@@ -9,6 +9,7 @@ import UIKit
 
 class CalculateViewController: UIViewController {
     
+    // MARK: - Initializers
     lazy var contentView = CalculateView()
     var splits: Int = 1
     var tip: Float = 0.1
@@ -23,16 +24,17 @@ class CalculateViewController: UIViewController {
         watchTapsOutOfKeyboard()
         loadUI()
         makeActions()
+        view.backgroundColor = .white
         
     }
     
-    func watchTapsOutOfKeyboard() {
-        //Looks for single or multiple taps.
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    
+    // MARK: - UI
     func loadUI() {
         contentView.splitValueTextView.text = String(splits)
         
@@ -52,20 +54,7 @@ class CalculateViewController: UIViewController {
         ])
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToResults" {
-            let resultsVC = segue.destination as! ResultViewController
-            resultsVC.splits = splits
-            resultsVC.tip = tip * 100
-            resultsVC.totalResult = splitResult
-        }
-    }
-    
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-    }
-    
+    // MARK: - Actions
     func makeActions() {
         contentView.calculateButton.addTarget(self, action: #selector(calculateButton), for: .touchUpInside)
         contentView.zeroButton.addTarget(self, action: #selector(zeroButton), for: .touchUpInside)
@@ -75,22 +64,22 @@ class CalculateViewController: UIViewController {
         
     }
     
-    @objc func splitStepper(sender: UIStepper){
-        splits = Int(sender.value)
-        contentView.splitValueTextView.text = String(splits)
-    }
-    
     @objc func calculateButton(sender: UIButton!) {
-        buttonAnimation(sender: sender)
         let bilReaded = contentView.enterBilTextField.text
         print(bilReaded ?? "Bill value error")
-        bill = Float(bilReaded ?? "0.0") ?? 0.0
         
-        splitResult = (bill + (bill * tip)) / Float(splits)
+        let bilWhithoutWhiteSpaces: String? = String((bilReaded ?? "0.0").filter { !" ".contains($0) })
         
-        print("bill:\(bill) tip:\(tip) splits:\(splits) result:\(splitResult)")
-        
-        performSegue(withIdentifier: "goToResults", sender: self)
+        if bilReaded == nil || bilWhithoutWhiteSpaces == "" {
+            alertaError(message: "Verify the bill value.")
+        } else {
+            bill = Float(bilWhithoutWhiteSpaces ?? "0.0")!
+            splitResult = (bill + (bill * tip)) / Float(splits)
+            
+            buttonAnimation(sender: sender)
+            navigationController?.present(ResultViewController(splitsValue: splits, totalResultValue: splitResult, tipValue: (tip * 100)), animated: true, completion: nil)
+        }
+
     }
     
     @objc func zeroButton(sender: UIButton!) {
@@ -98,7 +87,7 @@ class CalculateViewController: UIViewController {
         contentView.zeroButton.isEnabled = false
         contentView.twentyButton.isEnabled = true
         
-        contentView.zeroButton.backgroundColor = .systemBlue
+        contentView.zeroButton.backgroundColor = #colorLiteral(red: 0.3490196078, green: 0.5333333333, blue: 0.7215686275, alpha: 1)
         contentView.tenButton.backgroundColor = .white
         contentView.twentyButton.backgroundColor = .white
         
@@ -111,7 +100,7 @@ class CalculateViewController: UIViewController {
         contentView.twentyButton.isEnabled = true
         
         contentView.zeroButton.backgroundColor = .white
-        contentView.tenButton.backgroundColor = .systemBlue
+        contentView.tenButton.backgroundColor = #colorLiteral(red: 0.3490196078, green: 0.5333333333, blue: 0.7215686275, alpha: 1)
         contentView.twentyButton.backgroundColor = .white
         
         tip = 0.1
@@ -124,11 +113,17 @@ class CalculateViewController: UIViewController {
         
         contentView.zeroButton.backgroundColor = .white
         contentView.tenButton.backgroundColor = .white
-        contentView.twentyButton.backgroundColor = .systemBlue
+        contentView.twentyButton.backgroundColor = #colorLiteral(red: 0.3490196078, green: 0.5333333333, blue: 0.7215686275, alpha: 1)
         
         tip = 0.2
     }
     
+    @objc func splitStepper(sender: UIStepper){
+        splits = Int(sender.value)
+        contentView.splitValueTextView.text = String(splits)
+    }
+    
+    // MARK: - Extra functions
     func buttonAnimation(sender: UIButton) {
         sender.alpha = 0.5
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
@@ -136,7 +131,23 @@ class CalculateViewController: UIViewController {
         }
     }
     
+    func alertaError(message: String){
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
     
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    func watchTapsOutOfKeyboard() {
+        //Looks for single or multiple taps.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
 
 }
 

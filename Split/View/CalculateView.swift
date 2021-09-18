@@ -29,6 +29,7 @@ class CalculateView: UIView {
         textView.textAlignment = .left
         textView.alpha = 0.4
         textView.isEditable = false
+        textView.isSelectable = false
         return textView
     }()
     
@@ -37,7 +38,7 @@ class CalculateView: UIView {
         textField.placeholder = "e.g 123.56"
         textField.textAlignment = .center
         textField.font = UIFont.systemFont(ofSize: 40)
-        textField.textColor = .systemBlue
+        textField.textColor = #colorLiteral(red: 0.3490196078, green: 0.5333333333, blue: 0.7215686275, alpha: 1)
         textField.keyboardType = UIKeyboardType.decimalPad
         return textField
     }()
@@ -55,7 +56,7 @@ class CalculateView: UIView {
     let zeroButton: UIButton = {
         let button = UIButton()
         button.setTitle("0%", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.3490196078, green: 0.5333333333, blue: 0.7215686275, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 40)
         button.isEnabled = true
         button.setTitleColor(.white, for: .disabled)
@@ -66,7 +67,7 @@ class CalculateView: UIView {
     let tenButton: UIButton = {
         let button = UIButton()
         button.setTitle("10%", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.3490196078, green: 0.5333333333, blue: 0.7215686275, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 40)
         button.isEnabled = true
         button.setTitleColor(.white, for: .disabled)
@@ -77,7 +78,7 @@ class CalculateView: UIView {
     let twentyButton: UIButton = {
         let button = UIButton()
         button.setTitle("20%", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.3490196078, green: 0.5333333333, blue: 0.7215686275, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 40)
         button.isEnabled = true
         button.setTitleColor(.white, for: .disabled)
@@ -101,7 +102,7 @@ class CalculateView: UIView {
         textView.font = UIFont.systemFont(ofSize: 30)
         textView.textAlignment = .center
         textView.alpha = 1.0
-        textView.textColor = .systemBlue
+        textView.textColor = #colorLiteral(red: 0.3490196078, green: 0.5333333333, blue: 0.7215686275, alpha: 1)
         textView.isEditable = false
         return textView
     }()
@@ -115,9 +116,9 @@ class CalculateView: UIView {
     let calculateButton: UIButton = {
         let button = UIButton()
         button.setTitle("Calculate", for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = #colorLiteral(red: 0.3490196078, green: 0.5333333333, blue: 0.7215686275, alpha: 1)
         button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
-        button.setTitleShadowColor(.systemBlue, for: .normal)
+        button.setTitleShadowColor(#colorLiteral(red: 0.3490196078, green: 0.5333333333, blue: 0.7215686275, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         button.layer.cornerRadius = 10
 
@@ -125,8 +126,7 @@ class CalculateView: UIView {
     }()
     
     private func addSubviews() {
-        [enterBilTextView,
-         enterBilTextField,
+        [enterBilTextField,
          selectTipTextView,
          zeroButton,
          tenButton,
@@ -134,7 +134,8 @@ class CalculateView: UIView {
          chooseSplitTextView,
          splitValueTextView,
          splitStepper,
-         calculateButton].forEach {
+         calculateButton,
+         enterBilTextView].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
          }
@@ -142,7 +143,7 @@ class CalculateView: UIView {
     
     private func setupAutoLayout() {
         let enterBilTextViewConstraints = [
-            enterBilTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: 70),
+            enterBilTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: 90),
             enterBilTextView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 34),
             enterBilTextView.rightAnchor.constraint(equalTo: self.rightAnchor),
             enterBilTextView.heightAnchor.constraint(equalToConstant: 50)
